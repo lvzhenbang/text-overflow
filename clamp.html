@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>custom clamp</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #ededed;
+    }
+    main {
+      width: 800px;
+      margin: 0 auto;
+    }
+    .example {
+      padding: 30px;
+      border-radius: 10px;
+      background-color: #ffffff;
+    }
+    .block {
+      position: relative;
+      padding: 20px;
+      margin: 20px 0;
+      border: 1px dotted #cdcdcd;
+      line-height: 1.0;
+    }
+    .tag {
+      position: absolute;
+      top: -14px;
+      left: 10px;
+
+      display: inline-block;
+      padding: 8px 16px;
+      font-size: 12px;
+      color: #fff;
+
+      border-radius: 4px;
+      background-color: #333333;
+    }
+
+    .tip {
+      margin-top: 10px;
+      color: red;
+    }
+
+    .block p {
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h2>clamp</h2>
+    <!-- chrome -->
+    <div class="example">
+      <h3><i>clamp</i></h3>
+      <div class="block">
+        <span class="tag">中文</span>
+        <p class="clamp">君不见，黄河之水天上来，奔流到海不复回。君不见，高堂明镜悲白发，朝如青丝暮成雪。人生得意须尽欢，莫使金樽空对月。天生我材必有用，千金散尽还复来。烹羊宰牛且为乐，会须一饮三百杯。岑夫子，丹丘生，将进酒，杯莫停。</p>
+      </div>
+      <div class="block">
+        <span class="tag">英文</span>
+        <p class="clamp">At school she had trouble concentrating on what the teachers said. They seemed to talk only about unimportant things. Why couldn't they talk about what a human being is--or about what the world is and how it came into being?</p>
+      </div>
+      <div class="tip">注：参考<a href="https://github.com/josephschmitt/Clamp.js">Clamp.js</a></div>
+      <div class="tip">注：clamp.js存在一个问题，就是它通过计算目标元素的高度与计算的`maxHeight`做对比，进而对目标元素内的文本进行截取。但是它的计算方法对于需要精确到n行，且需要设置line-height的来说，是有问题的。</div>
+      <div class="tip">注：原项目现在不怎么维护了，所以自己修改了一下。修改后的<a href="https://github.com/lvzhenbang/Clamp.js">Clamp.js</a>，使用了ES6语法进行了重写。</div>
+    </div>
+  </main>
+  <script src="js/clamp.js"></script>
+  <script>
+    Array
+      .prototype
+      .slice
+      .apply(document.querySelectorAll('.clamp'))
+      .forEach(function(item) {
+        new $clamp(
+          item,
+          {
+            clamp: 2,
+            truncationHTML: '<a href="#">cccc</a>'
+          }
+        )
+      })
+  </script> 
+</body>
+</html>

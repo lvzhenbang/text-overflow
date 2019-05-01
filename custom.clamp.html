@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>custom clamp</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #ededed;
+    }
+    main {
+      width: 800px;
+      margin: 0 auto;
+    }
+    .example {
+      padding: 30px;
+      border-radius: 10px;
+      background-color: #ffffff;
+    }
+    .block {
+      position: relative;
+      padding: 20px;
+      margin: 20px 0;
+      border: 1px dotted #cdcdcd;
+      line-height: 1.0;
+    }
+    .tag {
+      position: absolute;
+      top: -14px;
+      left: 10px;
+
+      display: inline-block;
+      padding: 8px 16px;
+      font-size: 12px;
+      color: #fff;
+
+      border-radius: 4px;
+      background-color: #333333;
+    }
+
+    .tip {
+      margin-top: 10px;
+      color: red;
+    }
+
+    .block span {
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h2>自定义的clamp</h2>
+    
+    <!-- chrome -->
+    <div class="example">
+      <h3><i>custom clamp</i></h3>
+      <div class="block">
+        <span class="tag">中文</span>
+        <p class="clamp">君不见，黄河之水天上来，奔流到海不复回。君不见，高堂明镜悲白发，朝如青丝暮成雪。人生得意须尽欢，莫使金樽空对月。天生我材必有用，千金散尽还复来。烹羊宰牛且为乐，会须一饮三百杯。岑夫子，丹丘生，将进酒，杯莫停。</p>
+      </div>
+      <div class="block">
+        <span class="tag">英文</span>
+        <p class="clamp">It was a pleasant afternoon in the month of July, 1642, when three young people sat together on a shady bank at the edge of a wood some three miles from Oxford. The country was undulating</p>
+      </div>
+      <div class="tip">注：截取原文本，使用`span`存取每行的文本</div>
+    </div>
+  </main>
+  <script src="js/custom.clamp.js"></script>
+  <script>
+    Array
+      .prototype.
+      slice.
+      apply(document.querySelectorAll('.clamp'))
+      .forEach(function(item) {
+        new clamp(item, {
+          clamp: 2
+        })
+      })
+  </script> 
+</body>
+</html>

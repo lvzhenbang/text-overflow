@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>text-overflow</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #ededed;
+    }
+    main {
+      width: 800px;
+      margin: 0 auto;
+    }
+    .example {
+      padding: 30px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      background-color: #ffffff;
+    }
+    .block {
+      position: relative;
+      padding: 20px;
+      margin: 20px 0;
+      border: 1px dotted #cdcdcd;
+      line-height: 1.0;
+    }
+    .tag {
+      position: absolute;
+      top: -14px;
+      left: 10px;
+
+      display: inline-block;
+      padding: 8px 16px;
+      font-size: 12px;
+      color: #fff;
+
+      border-radius: 4px;
+      background-color: #333333;
+    }
+    .tip {
+      font-size: 12px;
+      color: red;
+    }
+
+    .text-overflow {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .fade {
+      position: relative;
+      height: 1em;
+      overflow: hidden;
+      white-space: nowrap
+    }
+
+    .fade::after {
+      content: '';
+
+      position: absolute;
+      bottom: 0;
+      right: 0;
+
+      display: block;
+      width: calc(20px + 2em);
+      height: 1em;
+
+      background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+    }
+
+    .c-text-overflow {
+      position: relative;
+      height: 1em;
+      overflow: hidden;
+      white-space: nowrap
+    }
+
+    .c-text-overflow::after {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+
+      display: block;
+      width: calc(20px + 1em);
+      height: 1em;
+
+      content: '...';
+      /* style */
+      background-color: #fff;
+      font-weight: bolder;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h2>单行文本的省略</h2>
+    
+    <!-- 使用text-overflow,强制文本内容为一行（） -->
+    <div class="example">
+      <h3><i>text-overflow，自动添加‘...’号</i></h3>
+      <div class="block">
+          <span class="tag">中文</span>
+        <p class="text-overflow">君不见，黄河之水天上来，奔流到海不复回。君不见，高堂明镜悲白发，朝如青丝暮成雪。人生得意须尽欢，莫使金樽空对月。天生我材必有用，千金散尽还复来。烹羊宰牛且为乐，会须一饮三百杯。岑夫子，丹丘生，将进酒，杯莫停。</p>
+      </div>
+      <div class="block">
+        <span class="tag">英文</span>
+        <p class="text-overflow">It was a pleasant afternoon in the month of July, 1642, when three young people sat together on a shady bank at the edge of a wood some three miles from Oxford. The country was undulating</p>
+      </div>
+    </div>
+    
+    <!-- 使用fade,在段未加一个淡出渐变 -->
+    <div class="example">
+      <h3><i>淡出渐变+pseudo</i></h3>
+      <div class="block">
+        <span class="tag">中文</span>
+        <p class="fade">君不见，黄河之水天上来，奔流到海不复回。君不见，高堂明镜悲白发，朝如青丝暮成雪。人生得意须尽欢，莫使金樽空对月。天生我材必有用，千金散尽还复来。烹羊宰牛且为乐，会须一饮三百杯。岑夫子，丹丘生，将进酒，杯莫停。</p>
+      </div>
+      <div class="block">
+        <span class="tag">英文</span>
+        <p class="fade">It was a pleasant afternoon in the month of July, 1642, when three young people sat together on a shady bank at the edge of a wood some three miles from Oxford. The country was undulating</p>
+      </div>
+    </div>
+    
+    <!-- 自定义text-overflow -->
+    <div class="example">
+      <h3><i>自定义实现text-overflow</i></h3>
+      <div class="block">
+        <span class="tag">中文</span>
+        <p class="c-text-overflow">君不见，黄河之水天上来，奔流到海不复回。君不见，高堂明镜悲白发，朝如青丝暮成雪。人生得意须尽欢，莫使金樽空对月。天生我材必有用，千金散尽还复来。烹羊宰牛且为乐，会须一饮三百杯。岑夫子，丹丘生，将进酒，杯莫停。</p>
+      </div>
+      <div class="block">
+        <span class="tag">英文</span>
+        <p class="c-text-overflow">It was a pleasant afternoon in the month of July, 1642, when three young people sat together on a shady bank at the edge of a wood some three miles from Oxford. The country was undulating</p>
+      </div>
+      <div class="tip">注：这种效果并不好，因为会出现半个字体的问题，除非'p'元素的宽度用'em'来代替。使用‘淡出’是更好的方案，但是这种方案可以定义各种省略符号。</div>
+      <div class="tip">注：前提是不用js的情况下，只使用css。</div>
+    </div>
+  </main>
+</body>
+</html>

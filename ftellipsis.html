@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ftellipsis</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #ededed;
+    }
+    main {
+      width: 800px;
+      margin: 0 auto;
+    }
+    .example {
+      padding: 30px;
+      border-radius: 10px;
+      background-color: #ffffff;
+    }
+    .block {
+      position: relative;
+      padding: 20px;
+      margin: 20px 0;
+      border: 1px dotted #cdcdcd;
+      line-height: 1.0;
+    }
+    .tag {
+      position: absolute;
+      top: -14px;
+      left: 10px;
+
+      display: inline-block;
+      padding: 8px 16px;
+      font-size: 12px;
+      color: #fff;
+
+      border-radius: 4px;
+      background-color: #333333;
+    }
+
+    .tip {
+      margin-top: 10px;
+      color: red;
+    }
+
+    .block p {
+      height: 2.4em;
+      line-height: 1.2;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h2>ftellipsis</h2>
+    <!-- chrome -->
+    <div class="example">
+      <h3><i>ftellipsis</i></h3>
+      <div class="block">
+        <span class="tag">中文</span>
+        <div class="block-item">
+          <p class="clamp">君不见，黄河之水天上来，奔流到海不复回。君不见，高堂明镜悲白发，朝如青丝暮成雪。人生得意须尽欢，莫使金樽空对月。天生我材必有用，千金散尽还复来。烹羊宰牛且为乐，会须一饮三百杯。岑夫子，丹丘生，将进酒，杯莫停。</p>
+        </div>
+      </div>
+      <div class="block">
+        <span class="tag">英文</span>
+        <p class="clamp">At school she had trouble concentrating on what the teachers said. They seemed to talk only about unimportant things. Why couldn't they talk about what a human being is--or about what the world is and how it came into being?</p>
+      </div>
+      <div class="tip">注：参考<a href="https://github.com/ftlabs/ftellipsis">ftellipsis</a></div>
+      <div class="tip">注：ftellipsis问题较大，使用<啊href="./clamp.html">clamp.js</a>即可。</div>
+    </div>
+  </main>
+  <script src="js/ftellipsis.js"></script>
+  <script>
+    Array
+      .prototype
+      .slice
+      .apply(document.querySelectorAll('.block-item'))
+      .forEach(function(item) {
+        var ellipsis = new Ellipsis(item);
+        ellipsis.calc();
+        ellipsis.set();
+      })
+  </script> 
+</body>
+</html>
