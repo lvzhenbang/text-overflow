@@ -4,7 +4,7 @@
 
 ## 示例
 
-* [` 单行文本 `]()
-* [` 多行文本 `]()
-* [` clamp.js `]()
-* [` 自定义clamp.js `]()
+* [` 单行文本 `](https://lvzhenbang.github.io/text-overflow/one.line.html)
+* [` 多行文本 `](https://lvzhenbang.github.io/text-overflow/multi.line.html)
+* [` clamp.js `](https://lvzhenbang.github.io/text-overflow/clamp.html)
+* [` 自定义clamp.js `](https://lvzhenbang.github.io/text-overflow/custom.clamp.html)
